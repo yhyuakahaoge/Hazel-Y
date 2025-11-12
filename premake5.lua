@@ -17,6 +17,8 @@ IncludeDir["GLFW"] = "Hazel/vendor/GLFW/include"
 IncludeDir["Glad"] = "Hazel/vendor/Glad/include"
 IncludeDir["ImGui"] = "Hazel/vendor/imgui"
 IncludeDir["glm"] = "Hazel/vendor/glm"
+IncludeDir["stb_image"] = "Hazel/vendor/stb_image"
+IncludeDir["entt"] = "Hazel/vendor/entt/include"
 
 include "Hazel/vendor/GLFW"
 include "Hazel/vendor/Glad"
@@ -39,6 +41,8 @@ project "Hazel"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
@@ -55,7 +59,9 @@ project "Hazel"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 	}
 
 	links 
@@ -143,4 +149,57 @@ project "Sandbox"
 	filter "configurations:Dist"
 		defines "HZ_DIST"
 		runtime "Release"
+		optimize "on"
+
+
+project "Hazelnut"
+
+	location "Hazelnut"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"Hazel/vendor/spdlog/include",
+		"Hazel/src",
+		"Hazel/vendor",
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
+	}
+
+	links
+	{
+		"Hazel"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+		
+	filter "configurations:Debug"
+		defines "HZ_DEBUG"
+		runtime "Debug"
+		buildoptions "/utf-8"
+		symbols "on"
+
+	filter "configurations:Release"
+		defines "HZ_RELEASE"
+		runtime "Release"
+		buildoptions "/utf-8"
+		optimize "on"
+
+	filter "configurations:Dist"
+		defines "HZ_DIST"
+		runtime "Release"
+		buildoptions "/utf-8"
 		optimize "on"

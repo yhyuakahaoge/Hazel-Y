@@ -84,13 +84,13 @@ namespace Hazel {
 		std::vector<BufferElement>::const_iterator begin() const { return m_Elements.begin(); }
 		std::vector<BufferElement>::const_iterator end() const { return m_Elements.end(); }
 	private:
-		void CalculateOffsetsAndStride()  //计算步长和偏移量
+		void CalculateOffsetsAndStride()
 		{
 			uint32_t offset = 0;
 			m_Stride = 0;
 			for (auto& element : m_Elements)
 			{
-				element.Offset = offset;  //初始化为0
+				element.Offset = offset;
 				offset += element.Size;
 				m_Stride += element.Size;
 			}
@@ -110,10 +110,13 @@ namespace Hazel {
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 
+		virtual void SetData(const void* data, uint32_t size) = 0;
+
 		virtual const BufferLayout& GetLayout() const = 0;
 		virtual void SetLayout(const BufferLayout& layout) = 0;
 
-		static VertexBuffer* Create(float* vertices, uint32_t size);
+		static std::shared_ptr<VertexBuffer> Create(uint32_t size);
+		static std::shared_ptr<VertexBuffer> Create(float* vertices, uint32_t size);
 	};
 
 	class IndexBuffer
@@ -126,7 +129,7 @@ namespace Hazel {
 
 		virtual uint32_t GetCount() const = 0;
 
-		static IndexBuffer* Create(uint32_t* indices, uint32_t size);
+		static  std::shared_ptr <IndexBuffer> Create(uint32_t* indices, uint32_t count);
 	};
 
 }
