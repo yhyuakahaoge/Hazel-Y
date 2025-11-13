@@ -36,6 +36,8 @@ namespace Hazel {
 
 		m_SecondCamera = m_ActiveScene->CreateEntity("Clip-Space Entity");
 
+
+
 		auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
 		cc.Primary = false;
 
@@ -50,7 +52,7 @@ namespace Hazel {
 			{
 			}
 
-			void OnUpdate(Timestep ts)
+			void OnUpdate(Timestep ts) override
 			{
 				auto& transform = GetComponent<TransformComponent>().Transform;
 				float speed = 5.0f;
@@ -67,6 +69,8 @@ namespace Hazel {
 		};
 
 		m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
+		
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 	}
 
 	void EditorLayer::OnDetach()
@@ -165,6 +169,8 @@ namespace Hazel {
 
 			ImGui::EndMenuBar();
 		}
+
+		m_SceneHierarchyPanel.OnImGuiRender();
 
 		ImGui::Begin("Settings");
 

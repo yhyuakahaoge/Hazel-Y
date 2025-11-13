@@ -119,7 +119,7 @@ namespace Hazel {
 	
 	void Renderer2D::BeginScene(const Camera& camera, const glm::mat4& transform)
 	{
-		glm::mat4 viewProj = camera.GetProjection() * glm::inverse(transform);
+		glm::mat4 viewProj = camera.GetProjection() * transform;
 
 		s_Data.TextureShader->Bind();
 		s_Data.TextureShader->SetMat4("u_ViewProjection", viewProj);
