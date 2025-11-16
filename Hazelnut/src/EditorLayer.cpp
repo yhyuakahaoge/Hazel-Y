@@ -175,8 +175,6 @@ namespace Hazel {
 			ImGui::EndMenuBar();
 		}
 
-		m_SceneHierarchyPanel.OnImGuiRender();
-
 		ImGui::Begin("Stats");
 
 		auto stats = Renderer2D::GetStats();
@@ -205,6 +203,8 @@ namespace Hazel {
 		ImGui::PopStyleVar();
 
 		ImGui::End();
+
+		m_SceneHierarchyPanel.OnImGuiRender();
 	}
 
 	void EditorLayer::OnEvent(Event& e)
