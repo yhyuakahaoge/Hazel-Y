@@ -1,10 +1,8 @@
 #pragma once
 
-#include "hzpch.h"
-
 #include "Hazel/Core/Base.h"
 #include "Hazel/Events/Event.h"
-
+#include <sstream>
 namespace Hazel {
 
 	struct WindowProps
