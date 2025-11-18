@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Hazel/Core/PlatformDetection.h"
-
+#include <iostream>
 #include <memory>
 
 #ifdef HZ_DEBUG
@@ -47,6 +47,5 @@ namespace Hazel {
 	constexpr Ref<T> CreateRef(Args&& ... args)
 	{
 		return std::make_shared<T>(std::forward<Args>(args)...);
-	}
-
+	}	
 }
