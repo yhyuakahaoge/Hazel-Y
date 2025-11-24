@@ -13,6 +13,11 @@ project "Sandbox"
 		"src/**.cpp"
 	}
 
+	defines
+	{
+		"YAML_CPP_STATIC_DEFINE"
+	}
+
 	includedirs
 	{
 		"%{wks.location}/Hazel/vendor/spdlog/include",

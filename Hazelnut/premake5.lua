@@ -13,13 +13,19 @@ project "Hazelnut"
 		"src/**.cpp"
 	}
 
+	defines
+	{
+		"YAML_CPP_STATIC_DEFINE"
+	}
+
 	includedirs
 	{
 		"%{wks.location}/Hazel/vendor/spdlog/include",
 		"%{wks.location}/Hazel/src",
 		"%{wks.location}/Hazel/vendor",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.ImGuizmo}"
 	}
 
 	links

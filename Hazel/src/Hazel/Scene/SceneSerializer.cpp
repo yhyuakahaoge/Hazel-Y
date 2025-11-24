@@ -190,6 +190,7 @@ namespace Hazel {
 		HZ_CORE_TRACE("Deserializing scene '{0}'", sceneName);
 
 		auto entities = data["Entities"];
+	
 		if (entities)
 		{
 			for (auto entity : entities)

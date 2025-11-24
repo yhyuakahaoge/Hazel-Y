@@ -7,6 +7,7 @@
 #include <glfw/glfw3.h>
 
 
+
 namespace Hazel {
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -15,7 +16,6 @@ namespace Hazel {
 
 	Application::Application(const std::string& name)
 	{
-	
 		HZ_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 		m_Window = Window::Create(WindowProps(name));
@@ -78,6 +78,7 @@ namespace Hazel {
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
 				layer->OnImGuiRender();
+				
 			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();

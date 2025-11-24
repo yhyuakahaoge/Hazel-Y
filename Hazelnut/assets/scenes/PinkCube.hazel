@@ -1,0 +1,20 @@
+Scene: Untitled
+Entities:
+  - Entity: 12837192831273
+    TagComponent:
+      Tag: Empty Entity
+    TransformComponent:
+      Translation: [-1.64999998, 0.512117386, 0.730000019]
+      Rotation: [8.27441653e-08, 1.51854992, 8.28182749e-08]
+      Scale: [0.999996305, 1, 0.999996305]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
+  - Entity: 12837192831273
+    TagComponent:
+      Tag: Empty Entity
+    TransformComponent:
+      Translation: [-1.89999998, 0, -5.69999981]
+      Rotation: [0, 1.3840462, 0.00872664619]
+      Scale: [1, 1, 1]
+    SpriteRendererComponent:
+      Color: [1, 1, 1, 1]
